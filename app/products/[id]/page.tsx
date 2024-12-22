@@ -1,13 +1,12 @@
 "use client";
-// import { useParams } from "react-router-dom";
-import { useRouter } from 'next/router';
+import { useParams } from "next/navigation";
 
 import React from "react";
 import Image from "next/image";
 
 const Page = () => {
-  const router = useRouter();
-  const { id } = router.query; 
+
+  const { id } = useParams();
 
   type Product = {
     id: number;
