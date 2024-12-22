@@ -2,17 +2,18 @@ import Catagories from "./components/Catagories";
 import HeroSection from "./components/HeroSection";
 import ProductCard from "./components/ProductCard";
 import Products from "./components/Products";
-import FooterLast from "./components/FooterLast";
+import Reviews from "./components/Reviews";
 
 export default function Home() {
   return (
     <main>
-      <div className="h-[470vh]">
+      <div className="h-[512vh]">
         <HeroSection/>
         <Products/>
         <ProductCard/>
         <Catagories/>
-        <FooterLast/>
+        <Reviews/>
+        {/* <FooterLast/> */}
       </div>
     </main>
   );
