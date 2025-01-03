@@ -5,157 +5,56 @@ import filter from "../../public/filter.png";
 import grtaer from "../../public/greaterthan-sign.png";
 import downArrow from "../../public/downArrow.png";
 import { Slider } from "@/components/ui/slider";
+import { client } from "@/sanity/lib/client";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { BiLeftArrowAlt } from "react-icons/bi";
+import { BiRightArrowAlt } from "react-icons/bi";
 
-const page = () => {
-  const items = [
-    {
-      id: 1,
-      heading: "Gradient Graphic T-shirt",
-      img2: "/stars 3.png",
-      para: "3.5/5",
-      price: "$145",
-      img: "/image (1).png",
-    },
-    {
-      id: 2,
-      heading: "Gradient Graphic T-shirt",
-      img2: "/stars 3.png",
-      para: "3.5/5",
-      price: "$145",
-      img: "/image (1).png",
-    },
-    {
-      id: 3,
-      heading: "Gradient Graphic T-shirt",
-      img2: "/stars 3.png",
-      para: "3.5/5",
-      price: "$145",
-      img: "/image (1).png",
-    },
-    {
-      id: 4,
-      heading: "Gradient Graphic T-shirt",
-      img2: "/stars 3.png",
-      para: "3.5/5",
-      price: "$145",
-      img: "/image (1).png",
-    },
-    {
-      id: 5,
-      heading: "Gradient Graphic T-shirt",
-      img2: "/stars 3.png",
-      para: "3.5/5",
-      price: "$145",
-      img: "/image (1).png",
-    },
-    {
-      id: 6,
-      heading: "Gradient Graphic T-shirt",
-      img2: "/stars 3.png",
-      para: "3.5/5",
-      price: "$145",
-      img: "/image (1).png",
-    },
-    {
-      id: 7,
-      heading: "Gradient Graphic T-shirt",
-      img2: "/stars 3.png",
-      para: "3.5/5",
-      price: "$145",
-      img: "/image (1).png",
-    },
-    {
-      id: 8,
-      heading: "Gradient Graphic T-shirt",
-      img2: "/stars 3.png",
-      para: "3.5/5",
-      price: "$145",
-      img: "/image (1).png",
-    },
-    {
-      id: 9,
-      heading: "Gradient Graphic T-shirt",
-      img2: "/stars 3.png",
-      para: "3.5/5",
-      price: "$145",
-      img: "/image (1).png",
-    },
-    // {
-    //   id: 2,
-    //   heading: "Polo with Tipping Details",
-    //   img2: "/stars.png",
-    //   para: "4.5/5",
-    //   price: "$180",
-    //   img: "/image (2).png",
-    // },
-    // {
-    //   id: 3,
-    //   heading: "Black Striped T-shirt",
-    //   para: "5.0/5",
-    //   price: "$120",
-    //   img3: "/star 5.png",
-    //   img4: "/off1.png",
-    //   img: "/image(3).png",
-    // },
-    // {
-    //   id: 4,
-    //   heading: "Skinny Fit Jeans",
-    //   img2: "/star.png",
-    //   para: "3.5/5",
-    //   price: "$240",
-    //   img3: "/$260.png",
-    //   img4: "/off.png",
-    //   img: "/Frame2.png",
-    // },
-    // {
-    //   id: 5,
-    //   heading: "Checkered Shirt",
-    //   img2: "/stars.png",
-    //   para: "4.5/5",
-    //   price: "$180",
-    //   img: "/Frame3.png",
-    // },
-    // {
-    //   id: 6,
-    //   heading: "Sleeve Striped T-Shirt",
-    //   img2: "/stars.png",
-    //   para: "4.5/5",
-    //   price: "$130",
-    //   img3: "/$160.png",
-    //   img4: "/off1.png",
-    //   img: "/Frame4.png",
-    // },
-    // {
-    //   id: 7,
-    //   heading: "Vertical Striped Shirt",
-    //   img2: "/star 5.png",
-    //   para: "5.0/5",
-    //   price: "$212",
-    //   img3: "/$232.png",
-    //   img4: "/off.png",
-    //   img: "/image 1.png",
-    // },
-    // {
-    //   id: 8,
-    //   heading: "Courage Graphic T-Shirt",
-    //   img2: "/stars 4.png",
-    //   para: "4.0/5",
-    //   price: "$145",
-    //   img: "/image (4).png",
-    // },
-    // {
-    //   id: 9,
-    //   heading: "Loose Fit Bermuda Shorts",
-    //   img2: "stars 3.png",
-    //   para: "3.0/5",
-    //   price: "$80",
-    //   img: "/image 3.png",
-    // },
-  ];
+type GivingTypes = {
+  _id: string;
+  heading: string;
+  img2: string;
+  img: string ;
+  para: string;
+  price: number;
+  para1 : string;
+  para2 : number;
+};
+const page = async () => {
+  const query = `
+  *[_type == "post"]{ _id, heading , price , img , img2 , para, para1, para2 }
+  `;
+  const items = await client.fetch(query);
 
   return (
-    <div className="flex justify-evenly mt-20">
-      <div className="w-[295px] hidden md:flex h-[1440px] border-gray-300 border p-6 rounded-3xl">
+    <div className=" mt-10 ">
+      <div className="w-[250px] ml-20 ">
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/products">Shop</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Casual</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      </div>
+      <div className="flex justify-evenly ml-5">
+
+      <div className="w-[295px] hidden md:flex h-[1440px] border-gray-300 border p-6 rounded-3xl mt-20">
         <div>
           {/* filters heading  */}
           <div className="flex justify-between pb-6 p-2 border-b-2 border-gray-200">
@@ -327,19 +226,20 @@ const page = () => {
                   <Image src={grtaer} alt="" />
                 </div>
               </div>
-              <button className="mt-9 bg-black h-[48px] w-[247px] rounded-3xl text-white">Apply Filter</button>
+              <button className="mt-9 bg-black h-[48px] w-[247px] rounded-3xl text-white">
+                Apply Filter
+              </button>
             </div>
-
           </div>
         </div>
       </div>
 
-      <div className="w-[1035px]">
-        <h1 className="font-bold text-[32px] mb-9 text-start ml-12">Casual</h1>
+      <div className="w-[1035px] mt-20">
+        <h1 className="font-bold text-[32px] mb-9  text-start ml-12">Casual</h1>
         <div className="flex flex-wrap justify-center gap-8">
-          {items.map((item) => (
-            <div key={item.id} className="h-auto w-[295px] flex flex-col ">
-              <Link href={`/products/${item.id}`}>
+          {items.map((item: GivingTypes) => (
+            <div key={item._id} className="h-auto w-[295px] flex flex-col ">
+              <Link href={`/products/${item._id}`}>
                 <Image
                   src={item.img}
                   alt={item.heading}
@@ -349,20 +249,48 @@ const page = () => {
                 />
               </Link>
               <h1 className="font-semibold text-lg mt-4">{item.heading}</h1>
-              <div className="flex gap-4 items-center mt-2">
+              <div className="flex gap-4 items-center mt-1">
                 <Image
-                  alt={item.heading}
+                  alt={""}
                   src={item.img2}
-                  width={50}
-                  height={50}
-                  className="rounded-full"
+                  width={100}
+                  height={100}
+                  className="bg-transparent"
                 />
                 <p className="text-gray-600">{item.para}</p>
               </div>
-              <h4 className="font-bold text-xl mt-4">{item.price}</h4>
+              <div className="flex gap-3 items-center">
+                <h4 className="font-bold text-xl mt-1">${item.price}</h4>
+                <h4 className="font-bold text-xl mt-1 line-through text-gray-400">
+                  ${item.para1}
+                </h4>
+                <h4 className="rounded-3xl h-[30px] w-[65px] text-red-600 mt-1 bg-red-100 flex justify-center items-center font-medium">{item.para2}%</h4>
+              </div>
             </div>
           ))}
         </div>
+        <div className="flex justify-between border-t-2 border-slate-200 m-10">
+          <div className="w-[100px] border-2 border-slate-400 mt-5 rounded-lg flex items-center gap-1  ">
+          <BiLeftArrowAlt className="ml-2" />
+            <button className="">Previous</button>
+          </div>
+          <div className="mt-5">
+            <ul className="flex gap-5 text-slate-400">
+              <li className="h-8 w-8 bg-slate-300 text-center rounded-md text-black" >1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>...</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+            </ul>
+          </div>
+          <div className="mt-5 rounded-lg w-[90px] border-2 flex items-center justify-center gap-2  border-slate-400">
+            <button> Next</button>
+          <BiRightArrowAlt className="" />
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   );

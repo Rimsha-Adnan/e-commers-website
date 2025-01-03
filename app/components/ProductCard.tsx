@@ -10,6 +10,7 @@ import shine1 from "../../public/stars 3.png";
 import shine2 from "../../public/stars 4.png";
 import shine3 from "../../public/stars 5.png";
 import price from "../../public/$232.png";
+import { Link } from "lucide-react";
 
 const ProductCard = () => {
   return (
@@ -107,7 +108,9 @@ const ProductCard = () => {
       </div>
       <div className="flex justify-center items-center mt-12">
         <button className=" border border-slate-300 h-[52px] w-[218px] rounded-3xl">
-          View All
+          <Link href="/products">
+             View All
+          </Link>
         </button>
       </div>
     </div>

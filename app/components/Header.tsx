@@ -8,9 +8,11 @@ import cart from "../../public/cart.png";
 import account from "../../public/account.png";
 import icon from "../../public/search-2.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { useCart } from "./CartContext";
 
 function Header() {
   const [navOpen, setNavOpen] = useState(false);
+  const {cartCount} = useCart();
   const handleNavToggle = () => {
     setNavOpen(!navOpen);
   };
@@ -21,10 +23,7 @@ function Header() {
       <div className="flex items-center justify-between w-full px-4 h-12 bg-black">
         <p className="flex-1 text-sm font-normal text-center text-white">
           Sign up and get 20% off your first order.
-          <a
-            href="#"
-            className="underline font-medium ml-2 text-white"
-          >
+          <a href="#" className="underline font-medium ml-2 text-white">
             Sign Up Now
           </a>
         </p>
@@ -53,30 +52,28 @@ function Header() {
         </div>
 
         {/* Links for Large Screens */}
+        <div className="px-5">
         <ul className="hidden md:flex gap-8 whitespace-nowrap font-normal text-[18px] font-[poppins] text-black">
           <li>
-            <Link href="/">
+            <Link href="/products">
               Shop <i className="fa-solid fa-angle-down"></i>
             </Link>
           </li>
           <li>
-            <Link href="contact">On Sale</Link>
+            <Link href="/products">On Sale</Link>
           </li>
           <li>
-            <Link href="about">New Arrivals</Link>
+            <Link href="/products">New Arrivals</Link>
           </li>
           <li>
-            <Link href="signup">Brands</Link>
+            <Link href="/products">Brands</Link>
           </li>
         </ul>
+        </div>
 
         {/* Search Bar */}
-        <div className="hidden md:flex items-center w-[577px] h-[48px] bg-[#F5F5F5] rounded-3xl">
-          <Image
-            alt="search"
-            src={search}
-            className="h-[24px] w-[24px] ml-4"
-          />
+        <div className="lg:flex sm:hidden  items-center md:w-[577px] md:h-[48px]  bg-[#F5F5F5] rounded-3xl">
+          <Image alt="search" src={search} className="h-[24px] w-[24px] ml-4" />
           <input
             type="text"
             className="bg-[#F5F5F5] focus:outline-none text-sm h-[38px] w-[500px] px-2"
@@ -85,14 +82,19 @@ function Header() {
         </div>
 
         {/* Icons */}
-         <div className="flex justify-start space-x-4 ">
+        <div className="flex justify-start space-x-4 ">
           <Image
             alt="search-icon"
             src={icon}
-            className="h-[24px] w-[24px] md:hidden"
+            className="h-[24px] w-[24px] lg:hidden"
           />
-          <Image alt="cart" src={cart} className="h-[24px] w-[24px]" />
-          <Image alt="account" src={account} className="h-[24px] w-[24px]" />
+          <Link href={"/cart"}>
+            <Image alt="cart" src={cart} className="h-[29px] w-[29px]" />
+            <span className="absolute top-1 right-3 md:top-20 md:right-[107px] bg-red-600 text-white text-xs rounded-full px-1">
+                    {cartCount}
+                  </span>
+          </Link>
+          <Image alt="account" src={account} className="h-[29px] w-[29px]" />
         </div>
       </div>
       {/* Mobile Navigation Menu */}
@@ -106,16 +108,16 @@ function Header() {
             />
           </div>
           <div className="flex flex-col items-start px-6 space-y-6 text-lg font-[poppins]">
-            <Link href="/" onClick={handleNavToggle}>
+            <Link href="/products" onClick={handleNavToggle}>
               Shop
             </Link>
-            <Link href="/apply" onClick={handleNavToggle}>
+            <Link href="/products" onClick={handleNavToggle}>
               On Sale
             </Link>
-            <Link href="/jobs" onClick={handleNavToggle}>
+            <Link href="/products" onClick={handleNavToggle}>
               New Arrivals
             </Link>
-            <Link href="/results" onClick={handleNavToggle}>
+            <Link href="/products" onClick={handleNavToggle}>
               Brands
             </Link>
           </div>
@@ -126,4 +128,3 @@ function Header() {
 }
 
 export default Header;
-

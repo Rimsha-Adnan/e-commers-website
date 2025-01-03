@@ -8,6 +8,7 @@ import prada from "../../public/prada-logo.png";
 import calvin from "../../public/Group (1).png";
 import shine from "../../public/Vector (1).png";
 import sine1 from "../../public/Vector (2).png";
+import Link from "next/link";
 
 
 const HeroSection = () => {
@@ -26,7 +27,10 @@ const HeroSection = () => {
           </p>
           
             <button className="bg-black text-white rounded-3xl h-[50px] w-[200px]">
+            <Link href="/products">
+          
               Shop Now
+          </Link>
             </button>
          
         </div>

@@ -4,7 +4,8 @@ import "./globals.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Script from "next/script";
-
+import { CartProvider } from "./components/CartContext";
+import FooterLast from "./components/FooterLast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,15 +31,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <Script src="https://kit.fontawesome.com/0821b4c791.js" strategy="lazyOnload"></Script>
+        <Script
+          src="https://kit.fontawesome.com/0821b4c791.js"
+          strategy="lazyOnload"
+        ></Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <Header/>
-        {children}
-        
-        <Footer/>
+        <CartProvider>
+          <Header />
+          {children}
+          <FooterLast/>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

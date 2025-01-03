@@ -10,6 +10,7 @@ import of from "../../public/off.png";
 import off from "../../public/off1.png";
 import star from "../../public/star.png";
 import stars from "../../public/stars.png";
+import Link from "next/link";
 
 const Products = () => {
   return (
@@ -97,7 +98,9 @@ const Products = () => {
       </div>
       <div className="flex justify-center items-center mt-12">
         <button className=" border border-slate-300 h-[52px] w-[218px] rounded-3xl">
+        <Link href="/products">
           View All
+          </Link>
         </button>
       </div>
     </div>

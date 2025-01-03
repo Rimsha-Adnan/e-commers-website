@@ -57,7 +57,7 @@ function Reviews() {
             {categorySvg.map((cate) => (
               <CarouselItem
                 key={cate.id}
-                className="md:basis-1/4 lg:basis-[180px] w-full   "
+                className="md:basis-1/3  w-full   "
                 // className="md:h-[140px] md:w-[170px]  "
               >
                 <div className="p-1 h-[240px] w-[400px]   rounded-[20px]">

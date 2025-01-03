@@ -13,7 +13,7 @@ export default function Home() {
         <ProductCard/>
         <Catagories/>
         <Reviews/>
-        {/* <FooterLast/> */}
+        
       </div>
     </main>
   );
