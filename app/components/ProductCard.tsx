@@ -14,11 +14,11 @@ import { Link } from "lucide-react";
 
 const ProductCard = () => {
   return (
-    <div className="mt-[50px] h-[650px] space-y-8  w-[1240px] m-auto">
-      <div className="flex justify-center items-center mt-[40px]">
-        <h1 className="font-bold text-[48px]">TOP SELLING</h1>
+    <div className="mt-[50px] h-auto  w-auto md:h-[650px] space-y-8 md:w-[1240px] m-auto">
+      <div className="flex md:justify-center items-center mt-[40px]">
+        <h1 className="font-bold  ml-9 md:ml-0 text-[36px] md:text-[48px]">TOP SELLING</h1>
       </div>
-      <div className="md:flex md:justify-center justify-center md:items-center space-x-7">
+      <div className="md:flex m-3 md:m-0 space-y-5 md:space-y-0 md:justify-center justify-center md:items-center space-x-7">
         <div>
           <ul>
             <li>
@@ -107,10 +107,10 @@ const ProductCard = () => {
         </div>
       </div>
       <div className="flex justify-center items-center mt-12">
-        <button className=" border border-slate-300 h-[52px] w-[218px] rounded-3xl">
-          <Link href="/products">
-             View All
-          </Link>
+        <button className=" mb-6 md:mb-0 border border-slate-300 h-[52px] w-[218px] rounded-3xl">
+        <Link href="/products">
+          View All
+        </Link>
         </button>
       </div>
     </div>

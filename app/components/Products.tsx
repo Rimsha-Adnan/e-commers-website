@@ -14,11 +14,11 @@ import Link from "next/link";
 
 const Products = () => {
   return (
-    <div className="mt-[50px] h-[650px] space-y-8 border-b-2 w-[1240px]  m-auto border-slate-200">
-      <div className="flex justify-center items-center mt-[40px]">
-        <h1 className="font-bold text-[48px]">NEW ARRIVALS</h1>
+    <div className="mt-[50px] h-auto  md:h-[650px] space-y-8 md:border-b-2 w-auto md:w-[1240px]  md:p-0  m-auto md:border-slate-200">
+      <div className="flex md:ml-0 ml-9 md:justify-center items-center mt-[40px]">
+        <h1 className="font-bold text-[35px] md:text-[48px]">NEW ARRIVALS</h1>
       </div>
-      <div className="md:flex md:justify-center justify-center md:items-center h-auto md:space-x-7">
+      <div className="md:flex m-3 md:m-0 md:justify-center justify-center md:items-center h-auto md:space-x-7">
         <div>
           <ul>
             <li>
@@ -96,14 +96,15 @@ const Products = () => {
           </ul>
         </div>
       </div>
-      <div className="flex justify-center items-center mt-12">
-        <button className=" border border-slate-300 h-[52px] w-[218px] rounded-3xl">
+      <div className="flex  w-[300px]  md:w-auto justify-center items-center mt-12">
+        <button className=" mb-6 md:mb-0 border  border-slate-300 h-[52px] w-[218px] rounded-3xl">
         <Link href="/products">
           View All
           </Link>
         </button>
       </div>
     </div>
+    
   );
 };
 

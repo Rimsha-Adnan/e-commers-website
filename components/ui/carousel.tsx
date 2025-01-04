@@ -209,8 +209,8 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute top-0  z-10 ",
-        "left-[94%]",  // Align the previous button to the left
+        "absolute md:top-0 top-16  z-10 ",
+        "left-[90%] md:left-[94%]",  // Align the previous button to the left
         "transform translate-y-[-50%]",  // Center vertically
         className
       )}
@@ -237,8 +237,8 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute top-0 z-10 ",
-        "right-0",  // Align the next button to the right
+        "absolute top-16 md:top-0 z-10 ",
+        "right-9 md:right-0",  // Align the next button to the right
         "transform translate-y-[-50%]",  // Center vertically
         className
       )}

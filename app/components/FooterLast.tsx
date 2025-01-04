@@ -44,7 +44,7 @@ import { IoMailOpenOutline } from "react-icons/io5";
 
 const FooterLast = () => {
   return (
-    <div className="lg:w-[1240px] w-auto h-auto md:h-[190px] relative top-24 z-10 mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center mt-20 bg-black rounded-[20px] p-4">
+    <div className="lg:w-[1450px] w-auto h-auto md:h-[190px] relative top-24 z-10  mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center mt-20 bg-black rounded-[20px] p-4">
       <div className="text-center md:text-left mb-6 md:mb-0 px-2">
         <h1 className="text-white font-bold text-[24px] md:text-[32px] lg:text-[40px] w-full md:w-[551px]">
           STAY UPTO DATE ABOUT OUR LATEST OFFERS

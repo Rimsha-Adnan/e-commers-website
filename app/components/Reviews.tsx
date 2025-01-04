@@ -27,7 +27,7 @@ const categorySvg = [
 
 function Reviews() {
   return (
-    <div className="h-[65vh] w-[90%] mx-auto flex flex-col justify-center px-8  ">
+    <div className="md:h-[20vh] md:mt-44  h-auto md:w-[90%] w-auto mx-auto flex md:flex-col  flex-row justify-center px-4  ">
       <div className="container">
         {/* Carousel with Heading and Buttons */}
         <Carousel
@@ -39,14 +39,14 @@ function Reviews() {
           {/* Heading and Buttons */}
           <div className="flex justify-between mb-6">
             {/* Category Heading */}
-            <div className="flex flex-col gap-3">
-              <div className="text-[38px] font-[inter] font-semibold">
+            <div className="flex  gap-5">
+              <div className="md:text-[38px] text-[30px] font-[inter] font-extrabold">
               OUR HAPPY CUSTOMERS
               </div>
             </div>
 
             {/* Previous and Next Buttons */}
-            <div className="flex gap-2">
+            <div className="flex mt-9 gap-2">
               <CarouselPrevious className="text-black" />
               <CarouselNext className="text-black" />
             </div>
@@ -57,12 +57,12 @@ function Reviews() {
             {categorySvg.map((cate) => (
               <CarouselItem
                 key={cate.id}
-                className="md:basis-1/3  w-full   "
+                className="md:basis-1/3  w-full  "
                 // className="md:h-[140px] md:w-[170px]  "
               >
-                <div className="p-1 h-[240px] w-[400px]   rounded-[20px]">
+                <div className=" md:h-[340px] md:w-[430px]   rounded-[20px]">
                   <Card>
-                    <CardContent className="flex items-center  justify-center p-8  ">
+                    <CardContent className="flex items-center  justify-center p-5  ">
                       <div className="">
                         <Image
                           src={cate.src}

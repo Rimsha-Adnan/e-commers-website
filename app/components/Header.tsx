@@ -12,7 +12,7 @@ import { useCart } from "./CartContext";
 
 function Header() {
   const [navOpen, setNavOpen] = useState(false);
-  const {cartCount} = useCart();
+  const { cartCount } = useCart();
   const handleNavToggle = () => {
     setNavOpen(!navOpen);
   };
@@ -53,30 +53,38 @@ function Header() {
 
         {/* Links for Large Screens */}
         <div className="px-5">
-        <ul className="hidden md:flex gap-8 whitespace-nowrap font-normal text-[18px] font-[poppins] text-black">
-          <li>
-            <Link href="/products">
-              Shop <i className="fa-solid fa-angle-down"></i>
-            </Link>
-          </li>
-          <li>
-            <Link href="/products">On Sale</Link>
-          </li>
-          <li>
-            <Link href="/products">New Arrivals</Link>
-          </li>
-          <li>
-            <Link href="/products">Brands</Link>
-          </li>
-        </ul>
+          <ul className="hidden md:flex gap-8 whitespace-nowrap font-normal text-[18px] font-[poppins] text-black">
+            <li>
+              <Link href="/products">
+                Shop <i className="fa-solid fa-angle-down"></i>
+              </Link>
+            </li>
+            <li>
+              <Link href="/products">On Sale</Link>
+            </li>
+            <li>
+              <Link href="/products">New Arrivals</Link>
+            </li>
+            <li>
+              <Link href="/products">Brands</Link>
+            </li>
+          </ul>
         </div>
 
         {/* Search Bar */}
-        <div className="lg:flex sm:hidden  items-center md:w-[577px] md:h-[48px]  bg-[#F5F5F5] rounded-3xl">
+        {/* <div className="lg:flex sm:hidden  items-center w-[577px] h-[48px]  bg-[#F5F5F5] rounded-3xl">
           <Image alt="search" src={search} className="h-[24px] w-[24px] ml-4" />
           <input
             type="text"
             className="bg-[#F5F5F5] focus:outline-none text-sm h-[38px] w-[500px] px-2"
+            placeholder="Search for products..."
+          />
+        </div> */}
+        <div className="hidden md:flex items-center md:w-[577px] md:h-[48px] h-auto w-auto bg-[#F5F5F5] rounded-3xl">
+          <Image alt="search" src={search} className="h-[24px] w-[24px] ml-4" />
+          <input
+            type="text"
+            className="bg-[#F5F5F5] focus:outline-none text-sm md:h-[38px] h-auto md:w-[500px] w-auto px-2"
             placeholder="Search for products..."
           />
         </div>
@@ -90,9 +98,9 @@ function Header() {
           />
           <Link href={"/cart"}>
             <Image alt="cart" src={cart} className="h-[29px] w-[29px]" />
-            <span className="absolute top-1 right-3 md:top-20 md:right-[107px] bg-red-600 text-white text-xs rounded-full px-1">
-                    {cartCount}
-                  </span>
+            <span className="absolute top-16 right-16 md:top-20 md:right-[107px] bg-red-600 text-white text-xs rounded-full px-1">
+              {cartCount}
+            </span>
           </Link>
           <Image alt="account" src={account} className="h-[29px] w-[29px]" />
         </div>
