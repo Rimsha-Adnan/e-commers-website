@@ -1,7 +1,7 @@
-import Products from '@/app/components/Products'
-import { type SchemaTypeDefinition } from 'sanity'
-import { product } from './product'
+import { type SchemaTypeDefinition } from 'sanity';
+import products from './product';
+import review from './review';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [product],
+  types: [products, review],
 }

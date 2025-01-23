@@ -1,11 +1,8 @@
-
 import * as React from "react";
-
-
 import {
     Card,
     CardContent,
-  } from "@/components/ui/card"
+  } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -14,20 +11,25 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
-import shine3 from "../../public/stars 5.png";
 import tick from "../../public/Tick.png";
+import { urlFor } from "@/sanity/lib/image";
+import { client } from "@/sanity/lib/client";
+type Info = {
+  _id: number;
+  name: string;
+  description: string;
+  image: string;
+}
 
-const categorySvg = [
-  { id: 1, src: shine3, title: "Sarah M.", src1: tick, description: "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations." },
-  { id: 2, src: shine3, title: "Alex K.", src1: tick, description: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions." },
-  { id: 3, src: shine3, title: "James L.", src1: tick, description: "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends." },
-  { id: 4, src: shine3, title: "Sarah M.", src1: tick, description: "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations." },
-  { id: 5, src: shine3, title: "James L.", src1: tick, description: "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends." },
-];
 
-function Reviews() {
+
+async function Reviews() {
+   const query = `
+    *[_type == "reviews"]{ _id, name, image, description }[0..9]
+    `;
+    const items = await client.fetch(query);
   return (
-    <div className="md:h-[20vh] md:mt-44  h-auto md:w-[90%] w-auto mx-auto flex md:flex-col  flex-row justify-center px-4  ">
+    <div className="md:h-[20vh] md:mt-56  h-auto md:w-[90%] w-auto mx-auto flex md:flex-col  flex-row justify-center px-4  ">
       <div className="container">
         {/* Carousel with Heading and Buttons */}
         <Carousel
@@ -54,29 +56,31 @@ function Reviews() {
 
           {/* Carousel Content */}
           <CarouselContent>
-            {categorySvg.map((cate) => (
+            {items.map((item: Info) => (
               <CarouselItem
-                key={cate.id}
+                key={item._id}
                 className="md:basis-1/3  w-full  "
-                // className="md:h-[140px] md:w-[170px]  "
+                // className="md:h-[140px] md:w-[170px] h-auto w-auto  "
               >
-                <div className=" md:h-[340px] md:w-[430px]   rounded-[20px]">
+                <div className=" md:h-[300px] md:w-[450px] rounded-[20px]">
                   <Card>
                     <CardContent className="flex items-center  justify-center p-5  ">
                       <div className="">
                         <Image
-                          src={cate.src}
-                          alt={cate.title}
+                          src={urlFor(item.image).url()}
+                          alt={item.name}
+                          height={100}
+                          width={140}
                           className="mb-2 blur-none filter "
                           
                         />
-                        <p className=" flex text-sm font-normal font-poppins ">
-                          {cate.title}
+                        <p className=" flex text-xl font-medium font-poppins mt-2 ">
+                          {item.name}
                           <Image
-                          src={cate.src1} alt={cate.title} />
+                          src={tick} alt={item.name} className="h-4 w-4 mt-2 ml-2"/>
                         </p>
-                        <p className="text-sm font-normal font-poppins ">
-                          {cate.description}
+                        <p className="text-sm font-normal font-poppins mt-3">
+                          {item.description}
                         </p>
                       </div>
                     </CardContent>

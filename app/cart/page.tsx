@@ -3,18 +3,9 @@ import React from "react";
 import Image from "next/image";
 import dustbin from "../../public/dustbin.png";
 import { useCart } from "../components/CartContext";
-
-
-
-type  ItemsType = {
-  id:string;
-  img: string;
-  title: string;
-  price: number;
-  quantity: number;
-}
-
-
+import Link from "next/link";
+import { urlFor } from "@/sanity/lib/image";
+import shirt from "@/public/gradient.png";
 
 const Page = () => {
   const { cartItems, removeFromCart, getTotalPrice } = useCart();
@@ -32,7 +23,7 @@ const Page = () => {
            
             className="border-gray-100 rounded-2xl border-2 flex flex-col gap-6 md:gap-9 w-full md:w-[715px] p-4 md:p-6"
           >
-          {cartItems.map((items: ItemsType, index: number) => {
+          {cartItems.map((items, index: number) => {
             return (
                 <div  key={index} className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
                   <div>
@@ -40,12 +31,12 @@ const Page = () => {
                       alt=""
                       width={120}
                       height={120}
-                      src={items.img}
+                      src={items?.image ? urlFor(items.image).url() : shirt}
                       className="rounded-md"
                     />
                   </div>
                   <div className="flex-1">
-                    <h2 className="font-semibold">{items.title}</h2>
+                    <h2 className="font-semibold">{items.name}</h2>
                     <p className="text-gray-600">Size: Large</p>
                     <p className="text-gray-600">Color: White</p>
                     <p className="font-bold">${items.price}</p>
@@ -92,7 +83,9 @@ const Page = () => {
             </div>
             <div className="flex justify-center">
               <button className="w-full md:w-[457px] h-[60px] bg-black text-white font-bold text-[16px] rounded-3xl">
+              <Link href="/checkout">
                 Go To Checkout
+              </Link>
               </button>
             </div>
           </div>

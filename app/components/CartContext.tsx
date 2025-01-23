@@ -4,11 +4,25 @@ import { createContext, useState, useEffect ,  useContext, ReactNode } from "rea
 
 interface CartItem {
   id: string;
-  title: string;
+  name: string;
   price: number;
-  img: string;
+  image: string;
   quantity: number;
 }
+
+// interface CartItem {
+//   _id: string;
+//   name: string;
+//   image: string;
+//   price: number;
+//   discountPercent:number;
+//   isNew:boolean;
+//   description: string;
+//   colors: string;
+//   sizes: string;
+//   id: string;
+//   quantity: number;
+// }
 
 interface CartContextType {
   cartItems: CartItem[];

@@ -114,7 +114,7 @@ const Footer = () => {
   //     </ul>
   //   </div>
   // </div> */} 
-  <div className="relative z-10 pt-[120px] px-6 md:px-[110px]">
+  <div className="relative overflow-hidden z-10 pt-[120px] px-6 md:px-[110px]">
   <div className="flex flex-wrap justify-between items-start gap-6 md:gap-28">
     {/* Shop.co Section */}
     <div className="w-full md:w-auto md:flex-1 space-y-4">
@@ -142,6 +142,7 @@ const Footer = () => {
       </ul>
     </div>
     {/* Footer Links */}
+    <div className="grid grid-cols-2 md:grid-cols-4 md:w-auto mb-6 md:mb-0  gap-8 md:gap-28">
     {[
       {
         title: "COMPANY",
@@ -172,20 +173,21 @@ const Footer = () => {
     ].map((section, index) => (
       <div
         key={index}
-        className="w-1/2 sm:w-[48%] md:w-auto mb-6 md:mb-0 flex-cols-2 md:flex-cols-4 md:gap-5"
+        className="space-y-3"
       >
-        <h3 className="font-medium text-[16px]">{section.title}</h3>
-        <ul className="text-[#919090] font-normal text-[16px] space-y-2">
+        <h3 className="font-medium text-[18px]">{section.title}</h3>
+        <ul className="text-[#919090] font-normal md:text-[19px] text-[14px] md:space-y-2 space-y-3 ">
           {section.items.map((item, idx) => (
-            <li className="" key={idx}>
+            <li className="" key={idx} >
               {item}
             </li>
           ))}
         </ul>
       </div>
     ))}
+    </div>
   </div>
-  <div className="border-t-2 border-slate-400 pt-6 flex flex-wrap justify-between items-center space-y-4 md:space-y-0">
+  <div className="border-t-2 border-slate-400 pt-7 flex flex-wrap justify-between items-center space-y-4 md:space-y-0">
     <p className="font-normal text-[14px] text-center w-full sm:w-auto">
       Shop.co © 2000-2023, All Rights Reserved
     </p>

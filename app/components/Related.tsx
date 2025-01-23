@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
+import { Link } from "lucide-react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import {
@@ -8,7 +8,6 @@ import {
   CarouselContent,
   
 } from "@/components/ui/carousel";
-import Link from "next/link";
 type GivingTypes = {
   _id: string;
   name: string;
@@ -18,7 +17,7 @@ type GivingTypes = {
   isNew:boolean;
   imageOne: string;
 };
-  const  ProductCard = async () => {
+  const  Related = async () => {
   
     const query = `
      *[_type == "products"]{ _id, name, image, price, discountPercent, isNew, imageOne  }[3..6]
@@ -153,8 +152,8 @@ type GivingTypes = {
                 <li className="flex space-x-2 font-bold text-[16px]">
                   <h4>{item.isNew}</h4>
                 <h4 className="font-bold text-xl mt-1">${item.price}</h4>
-                  <h4 className="rounded-3xl h-[30px] w-[65px] text-red-600 mt-1  flex justify-center items-center font-medium">
-                  {item?.discountPercent ? ` ${item?.discountPercent} %` : ''}
+                  <h4 className="rounded-3xl h-[30px] w-[65px] text-red-600 mt-1 bg-red-100 flex justify-center items-center font-medium">
+                    {item.discountPercent}%
                   </h4>
                 </li>
               </ul>
@@ -163,16 +162,9 @@ type GivingTypes = {
         ))}
       </div>
       </CarouselContent>
-      <div className="flex justify-center items-center mt-12">
-        <button className=" mb-6 md:mb-0 border border-slate-300 h-[52px] w-[218px] rounded-3xl">
-        <Link href="/products">
-          View All
-        </Link>
-        </button>
-      </div>
       </Carousel>
     </div>
   );
 };
 
-export default ProductCard;
+export default Related;

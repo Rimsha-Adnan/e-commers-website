@@ -1,83 +1,75 @@
-import {defineField, defineType} from 'sanity'
+import { defineType } from "sanity"
 
-export const product = defineType({
-  name: 'post',
-  title: 'Post',
-  type: 'document',
-  fields: [
-    defineField({
-      name: 'heading',
-      type: 'string',
-     
-    }),
-    defineField({
-      name: 'img2',
-      type: 'string',
-      
-    }),
-    defineField({
-      name: 'para',
-      type: 'number',
-      
-    }),
-    defineField({
-      name: 'price',
-      type: 'number',
-    }),
-    defineField({
-      name: 'img',
-      type: 'string',
-      
-    }),
-    defineField({
-        name: 'para1',
+export default defineType({
+    name: 'products',
+    title: 'Products',
+    type: 'document',
+    fields: [
+        {
+        name: 'name',
+        title: 'Name',
+        type: 'string',
+        },
+        {
+        name: 'price',
+        title: 'Price',
         type: 'number',
+        },
+        {
+        name: 'description',
+        title: 'Description',
+        type: 'text',
+        },
+        {
+        name: 'image',
+        title: 'Image',
+        type: 'image',
+        },
+        {
+            name:"category",
+            title:"Category",
+            type: 'string',
+            options:{
+                list:[
+                   {title: 'T-Shirt', value: 'tshirt'},
+                   {title: 'Short', value: 'short'}, 
+                   {title: 'Jeans', value: 'jeans'} ,
+                   {title: 'Hoddie', value: 'hoodie'} ,
+                   {title: 'Shirt', value: 'shirt'} ,
+                ]
+            }
+        },
+        {
+            name: 'imageOne',
+            title: 'Image One',
+            type: 'image',
+            },
+        {
+            name:"discountPercent",
+            title:"Discount Percent",
+            type: 'number',
+        },
+        {
+            name:"new",
+            type: 'boolean',
+            title:"New",
+        },
+        {
+            name:"colors",
+            title:"Colors",
+            type: 'array',
+            of:[
+                {type: 'string'}
+            ]
+        },
+        {
+            name:"sizes",
+            title:"Sizes",
+            type: 'array',
+            of:[
+                {type: 'string'}
+            ]
+        }, 
         
-      }),
-      defineField({
-        name: 'para2',
-        type: 'number',
-        
-      }),
-      defineField({
-        name: 'paragraph',
-        type: 'string',
-        
-      }),
-      defineField({
-        name: 'color1',
-        type: 'string',
-        
-      }),
-      defineField({
-        name: 'color2',
-        type: 'string',
-        
-      }),
-      defineField({
-        name: 'color3',
-        type: 'string',
-        
-      }),
-      defineField({
-        name: 'size1',
-        type: 'string',
-        
-      }),
-      defineField({
-        name: 'size2',
-        type: 'string',
-        
-      }),
-      defineField({
-        name: 'size3',
-        type: 'string',
-        
-      }),
-      defineField({
-        name: 'size4',
-        type: 'string',
-        
-      }),
-  ],
+    ],
 })
